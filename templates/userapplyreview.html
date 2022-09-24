@@ -1,0 +1,62 @@
+{% extends 'userheader.html' %}
+
+{% block content %}
+
+<style type="text/css">
+    table,tr,th,td
+    {
+        font-name:arial;
+        border:1px solid black;
+        border-collapse:collapse;
+    }
+    td, th
+    {
+    width:150px;
+    text-align:center;
+    }
+body{
+    /*background-image: url('/static/img/bckg2.jpg');
+}
+</style>
+
+
+<div style="position:absolute; left:200px; top:100px;">
+    <br>
+    <h2> {{msg}} </h2>
+    <br>
+    <h1>This is User Apply Review Page</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Book Id</th>
+            <th>Book Name</th>
+            <th>Author Name</th>
+            <th>Publisher Name</th>
+            <th>Published Year</th>
+            <th>Image</th>
+            <th>Apply Review</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for data in rows %}
+        <tr>
+            {% for row in data %}
+                    {% if loop.index<=5 %}
+                    <td>{{row}}</td>
+                    {% endif %}
+                    {% if loop.index==6 %}
+                    <td>
+                        <br>
+                        <img src="/static/img/{{row}}" width="100px" height="100px"/>
+                        <br>
+                    </td>
+                    {% endif %}
+            {% endfor %}
+            <td> <a href="userapplyreview1?id={{data[0]}}">Apply Review</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

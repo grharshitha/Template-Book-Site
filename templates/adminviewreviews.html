@@ -1,0 +1,311 @@
+{% extends 'adminheader.html' %}
+
+{% block content %}
+
+
+<style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+        /*background: #e35869;*/
+        font-family: 'Rubik', sans-serif;
+    }
+
+    .login-form {
+        background: #fff;
+        width: 500px;
+        margin: 65px auto;
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        flex-direction: column;
+        border-radius: 4px;
+        box-shadow: 0 2px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .login-form h1 {
+        padding: 35px 35px 0 35px;
+        font-weight: 300;
+    }
+
+    .login-form .content {
+        padding: 35px;
+        text-align: center;
+    }
+
+    .login-form .input-field {
+        padding: 12px 5px;
+    }
+
+    .login-form .select {
+        padding: 12px 5px;
+    }
+
+    .login-form .input-field input {
+        font-size: 16px;
+        display: block;
+        font-family: 'Rubik', sans-serif;
+        width: 100%;
+        padding: 10px 1px;
+        border: 0;
+        border-bottom: 1px solid #747474;
+        outline: none;
+        -webkit-transition: all .2s;
+        transition: all .2s;
+    }
+
+    .login-form .input-field input::-webkit-input-placeholder {
+        text-transform: uppercase;
+    }
+
+    .login-form .input-field input::-moz-placeholder {
+        text-transform: uppercase;
+    }
+
+    .login-form .input-field input:-ms-input-placeholder {
+        text-transform: uppercase;
+    }
+
+    .login-form .input-field input::-ms-input-placeholder {
+        text-transform: uppercase;
+    }
+
+    .login-form .input-field input::placeholder {
+        text-transform: uppercase;
+    }
+
+    .login-form .input-field input:focus {
+        border-color: #222;
+    }
+
+    .login-form a.link {
+        text-decoration: none;
+        color: #747474;
+        letter-spacing: 0.2px;
+        text-transform: uppercase;
+        display: inline-block;
+        margin-top: 20px;
+    }
+
+    .login-form .action {
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        flex-direction: row;
+    }
+
+    .login-form .action button {
+        width: 100%;
+        border: none;
+        padding: 18px;
+        font-family: 'Rubik', sans-serif;
+        cursor: pointer;
+        text-transform: uppercase;
+        background: #e8e9ec;
+        color: #777;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 0;
+        letter-spacing: 0.2px;
+        outline: 0;
+        -webkit-transition: all .3s;
+        transition: all .3s;
+    }
+
+    .login-form .action button:hover {
+        background: #d8d8d8;
+    }
+
+    .login-form .action button:nth-child(2) {
+        background: #2d3b55;
+        color: #fff;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 4px;
+    }
+
+    .login-form .action button:nth-child(2):hover {
+        background: #3c4d6d;
+    }
+
+    table, tr, th, td {
+        font-name: arial;
+        border: 1px solid black;
+        border-collapse: collapse;
+        margin-right: 5px;
+    }
+
+    td, th {
+        width: 100px;
+        text-align: center;
+        height: 50px;
+    }
+</style>
+
+<style>
+    @import url(http://fonts.googleapis.com/css?family=Roboto:500,100,300,700,400);
+
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: roboto;
+    }
+
+    body {
+        background: #FFFFFF;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .rate {
+        float: left;
+        height: 46px;
+        padding: 0 10px;
+    }
+
+    .rate:not(:checked) > input {
+        position: absolute;
+        top: -9999px;
+    }
+
+    .rate:not(:checked) > label {
+        float: right;
+        width: 1em;
+        overflow: hidden;
+        white-space: nowrap;
+        cursor: pointer;
+        font-size: 30px;
+        color: #ccc;
+    }
+
+    .rate:not(:checked) > label:before {
+        content: '★ ';
+    }
+
+    .rate > input:checked ~ label {
+        color: #ffc700;
+    }
+
+    .rate:not(:checked) > label:hover,
+    .rate:not(:checked) > label:hover ~ label {
+        color: #deb217;
+    }
+
+    .rate > input:checked + label:hover,
+    .rate > input:checked + label:hover ~ label,
+    .rate > input:checked ~ label:hover,
+    .rate > input:checked ~ label:hover ~ label,
+    .rate > label:hover ~ input:checked ~ label {
+        color: #c59b08;
+    }
+</style>
+
+<div style="position:absolute; left:100px; top:100px;">
+    <h1>This is Admin View Reviews Page</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email Id</th>
+            <th>Phone Number</th>
+            <th>Book Name</th>
+            <th>Author Name</th>
+            <th>Publiher Name</th>
+            <th>Published Year</th>
+            <th>Comments</th>
+            <th>Review</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for data in rows %}
+        <tr>
+            <td>{{data[2]}}</td>
+            <td>{{data[3]}}</td>
+            <td>{{data[4]}}</td>
+            <td>{{data[5]}}</td>
+            <td>{{data[7]}}</td>
+            <td>{{data[8]}}</td>
+            <td>{{data[9]}}</td>
+            <td>{{data[10]}}</td>
+            <td>{{data[12]}}</td>
+            <td style="width: 175px;">
+                    <div class="input-field">
+                        <div class="rate">
+                             {%if data[11] == "5"%}
+                            <img src="/static/img/starselected.png" width="10px" height="10px"/>
+                            <img src="/static/img/starselected.png" width="10px" height="10px"/>
+                            <img src="/static/img/starselected.png" width="10px" height="10px"/>
+                            <img src="/static/img/starselected.png" width="10px" height="10px"/>
+                            <img src="/static/img/starselected.png" width="10px" height="10px"/>
+                            {% endif %}
+                            {%if data[11] == "4"%}
+                            <img src="/static/img/starselected.png" width="10px" height="10px"/>
+                            <img src="/static/img/starselected.png" width="10px" height="10px"/>
+                            <img src="/static/img/starselected.png" width="10px" height="10px"/>
+                            <img src="/static/img/starselected.png" width="10px" height="10px"/>
+                            <img src="/static/img/starunselected.jpg" width="10px" height="10px"/>
+                            {% endif %}
+                            {%if data[11] == "3"%}
+                            <img src="/static/img/starselected.png" width="10px" height="10px"/>
+                            <img src="/static/img/starselected.png" width="10px" height="10px"/>
+                            <img src="/static/img/starselected.png" width="10px" height="10px"/>
+                            <img src="/static/img/starunselected.jpg" width="10px" height="10px"/>
+                            <img src="/static/img/starunselected.jpg" width="10px" height="10px"/>
+                            {% endif %}
+                            {%if data[11] == "2"%}
+                            <img src="/static/img/starselected.png" width="10px" height="10px"/>
+                            <img src="/static/img/starselected.png" width="10px" height="10px"/>
+                            <img src="/static/img/starunselected.jpg" width="10px" height="10px"/>
+                            <img src="/static/img/starunselected.jpg" width="10px" height="10px"/>
+                            <img src="/static/img/starunselected.jpg" width="10px" height="10px"/>
+                            {% endif %}
+                            {%if data[11] == "1"%}
+                            <img src="/static/img/starselected.png" width="10px" height="10px"/>
+                            <img src="/static/img/starunselected.jpg" width="10px" height="10px"/>
+                            <img src="/static/img/starunselected.jpg" width="10px" height="10px"/>
+                            <img src="/static/img/starunselected.jpg" width="10px" height="10px"/>
+                            <img src="/static/img/starunselected.jpg" width="10px" height="10px"/>
+                            {% endif %}
+                        </div>
+                    </div>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+    <h2>Rating Count</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Rating</th>
+            <th>Count</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for data in countrows %}
+        <tr>
+            {% for row in data%}
+            <td>{{row}}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+pip install flask
+pip install flask_mysqldb
+pip install django
+pip install flask_session
+
+In xaamp turn on sql
+copy sqldb.sql contents to any sql IDE (eg: sql yog) and run it 
+
+To run
+1.open vs code 
+2.open the folder
+3.install all extensions
+5.open new terminal
+6.python main.py runserver
+
+admin login details
+username - admin
+password - admin
+
+To exit
+Press CTRL + C Key

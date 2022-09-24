@@ -1,0 +1,371 @@
+{% extends 'userheader.html' %}
+
+{% block content %}
+
+<style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+        background: #58dce3;
+        font-family: 'Rubik', sans-serif;
+    }
+
+    .login-form {
+        background: #fff;
+        width: 500px;
+        margin: 65px auto;
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        flex-direction: column;
+        border-radius: 4px;
+        box-shadow: 0 2px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .login-form h1 {
+        padding: 35px 35px 0 35px;
+        font-weight: 300;
+    }
+
+    .login-form .content {
+        padding: 35px;
+        text-align: center;
+    }
+
+    .login-form .input-field {
+        padding: 12px 5px;
+    }
+
+    .login-form .select {
+        padding: 12px 5px;
+    }
+
+     .login-form .input-field textarea{
+        font-size: 16px;
+        display: block;
+        font-family: 'Rubik', sans-serif;
+        width: 100%;
+        padding: 10px 1px;
+        border: 0;
+        border: 1px solid #747474;
+        outline: none;
+        -webkit-transition: all .2s;
+        transition: all .2s;
+    }
+
+    .login-form .input-field input {
+        font-size: 16px;
+        display: block;
+        font-family: 'Rubik', sans-serif;
+        width: 100%;
+        padding: 10px 1px;
+        border: 0;
+        border-bottom: 1px solid #747474;
+        outline: none;
+        -webkit-transition: all .2s;
+        transition: all .2s;
+    }
+
+    .login-form .input-field input::-webkit-input-placeholder {
+        text-transform: uppercase;
+    }
+
+    .login-form .input-field input::-moz-placeholder {
+        text-transform: uppercase;
+    }
+
+    .login-form .input-field input:-ms-input-placeholder {
+        text-transform: uppercase;
+    }
+
+    .login-form .input-field input::-ms-input-placeholder {
+        text-transform: uppercase;
+    }
+
+    .login-form .input-field input::placeholder {
+        text-transform: uppercase;
+    }
+
+    .login-form .input-field input:focus {
+        border-color: #222;
+    }
+
+    .login-form a.link {
+        text-decoration: none;
+        color: #747474;
+        letter-spacing: 0.2px;
+        text-transform: uppercase;
+        display: inline-block;
+        margin-top: 20px;
+    }
+
+    .login-form .action {
+        display: -webkit-box;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        flex-direction: row;
+    }
+
+    .login-form .action button {
+        width: 100%;
+        border: none;
+        padding: 18px;
+        font-family: 'Rubik', sans-serif;
+        cursor: pointer;
+        text-transform: uppercase;
+        background: #e8e9ec;
+        color: #777;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 0;
+        letter-spacing: 0.2px;
+        outline: 0;
+        -webkit-transition: all .3s;
+        transition: all .3s;
+    }
+
+    .login-form .action button:hover {
+        background: #d8d8d8;
+    }
+
+    .login-form .action button:nth-child(2) {
+        background: #2d3b55;
+        color: #fff;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 4px;
+    }
+
+    .login-form .action button:nth-child(2):hover {
+        background: #3c4d6d;
+    }
+</style>
+
+<script type="text/javascript">
+    function isNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            alert("Please enter only numbers");
+            return false;
+        }
+        return true;
+    }
+
+    function allowOnlyLetters(e, t) {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        } else if (e) {
+            var charCode = e.which;
+        } else {
+            return true;
+        }
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123))
+            return true;
+        else {
+            alert("Please enter only alphabets");
+            return false;
+        }
+    }
+
+    function selectrating(s)
+    {
+        //alert(s);
+        document.getElementById('rating').value=s;
+    }
+</script>
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-46156385-1', 'cssscript.com');
+    ga('send', 'pageview');
+
+</script>
+
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-2783044520727903";
+/* CSSScript Demo Page */
+google_ad_slot = "3025259193";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+        src="//pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+<style>
+    @import url(http://fonts.googleapis.com/css?family=Roboto:500,100,300,700,400);
+
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: roboto;
+    }
+
+    body {
+        background: #000;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .rate {
+        float: left;
+        height: 46px;
+        padding: 0 10px;
+    }
+
+    .rate:not(:checked) > input {
+        position: absolute;
+        top: -9999px;
+    }
+
+    .rate:not(:checked) > label {
+        float: right;
+        width: 1em;
+        overflow: hidden;
+        white-space: nowrap;
+        cursor: pointer;
+        font-size: 30px;
+        color: #ccc;
+    }
+
+    .rate:not(:checked) > label:before {
+        content: '★ ';
+    }
+
+    .rate > input:checked ~ label {
+        color: #ffc700;
+    }
+
+    .rate:not(:checked) > label:hover,
+    .rate:not(:checked) > label:hover ~ label {
+        color: #deb217;
+    }
+
+    .rate > input:checked + label:hover,
+    .rate > input:checked + label:hover ~ label,
+    .rate > input:checked ~ label:hover,
+    .rate > input:checked ~ label:hover ~ label,
+    .rate > label:hover ~ input:checked ~ label {
+        color: #c59b08;
+    }
+</style>
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+<div class="login-form">
+    <form action="userapplyreview2" method="post">
+        <br>
+        <h3>
+            <center> {{msg}}</center>
+        </h3>
+        <h1>Apply Review Page</h1>
+        <div class="content">
+
+            <div class="input-field">
+                <div class="rate">
+                    <input type="radio" id="star5" name="rate" value="5" onclick="selectrating(this.value)"/>
+                    <label for="star5" title="text">5 stars</label>
+                    <input type="radio" id="star4" name="rate" value="4" onclick="selectrating(this.value)"/>
+                    <label for="star4" title="text">4 stars</label>
+                    <input type="radio" id="star3" name="rate" value="3" onclick="selectrating(this.value)"/>
+                    <label for="star3" title="text">3 stars</label>
+                    <input type="radio" id="star2" name="rate" value="2" onclick="selectrating(this.value)"/>
+                    <label for="star2" title="text">2 stars</label>
+                    <input type="radio" id="star1" name="rate" value="1" onclick="selectrating(this.value)"/>
+                    <label for="star1" title="text">1 star</label>
+                </div>
+            </div>
+
+            <div class="input-field">
+                <br>
+                <textarea name="comments" rows="15" cols="10"
+                       placeholder="Comments" autocomplete="nope" required
+                ></textarea>
+            </div>
+
+            <div class="input-field">
+                <input type="hidden" name="rating" id="rating"
+                       placeholder="Rating" autocomplete="nope" required
+                       value="" readonly>
+            </div>
+
+            <div class="input-field">
+                <input type="text" name="userid"
+                       placeholder="User Id" autocomplete="nope" required
+                       value="{{userdata[0]}}" readonly>
+            </div>
+            <div class="input-field">
+                <input type="text" name="fname" placeholder="First Name" autocomplete="nope" required
+                       value="{{userdata[1]}}" readonly>
+            </div>
+            <div class="input-field">
+                <input type="text" name="lname" placeholder="Last Name" autocomplete="nope" required
+                       value="{{userdata[2]}}" readonly>
+            </div>
+            <div class="input-field">
+                <input type="email" name="emailid" placeholder="Email Id" autocomplete="nope" required
+                       value="{{userdata[5]}}" readonly>
+            </div>
+            <div class="input-field">
+                <input type="text" name="phnum" placeholder="Phone Number" autocomplete="nope" required
+                       pattern="^[7-9][0-9]{9}$" title="Phone Num should starts with 7,8,9 should be 10 digits"
+                       maxlength="10"
+                       value="{{userdata[6]}}" readonly>
+            </div>
+            <div class="input-field">
+                <input type="text" name="bookid"
+                       placeholder="Book Id" autocomplete="nope" required
+                       value="{{rows[0]}}" readonly>
+            </div>
+            <div class="input-field">
+                <input type="text" name="bname" placeholder="Book Name" autocomplete="nope" required
+                       value="{{rows[1]}}" readonly>
+            </div>
+            <div class="input-field">
+                <input type="text" name="aname" placeholder="Author Name" autocomplete="nope" required
+                       value="{{rows[2]}}" readonly>
+            </div>
+            <div class="input-field">
+                <input type="text" name="publisher" placeholder="Publisher Name" autocomplete="nope" required
+                       value="{{rows[3]}}" readonly>
+            </div>
+            <div class="input-field">
+                <input type="text" name="year" placeholder="Year"
+                       pattern="[0-9]{4}" onkeypress="return isNumber(event)"
+                       autocomplete="nope" required maxlength="4"
+                       title="Year should be 4 digits"
+                       value="{{rows[4]}}" readonly>
+            </div>
+            <div class="input-field">
+                Book Image
+                <br>
+                <img src="/static/img/{{rows[5]}}" width="200" height="200"/>
+            </div>
+        </div>
+        <div class="action">
+            <button>Apply Review</button>
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}
